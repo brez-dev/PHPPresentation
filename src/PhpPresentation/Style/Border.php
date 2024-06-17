@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPPresentation - A pure PHP library for reading and writing
  * presentations documents.
@@ -87,7 +88,7 @@ class Border implements ComparableInterface
     /**
      * Get line width (in points).
      */
-    public function getLineWidth(): int
+    public function getLineWidth(): float
     {
         return $this->lineWidth;
     }
@@ -95,7 +96,7 @@ class Border implements ComparableInterface
     /**
      * Set line width (in points).
      */
-    public function setLineWidth(int $pValue = 1): self
+    public function setLineWidth(float $pValue = 1): self
     {
         $this->lineWidth = $pValue;
 
@@ -171,10 +172,10 @@ class Border implements ComparableInterface
     {
         return md5(
             $this->lineStyle
-            . $this->lineWidth
-            . $this->dashStyle
-            . $this->color->getHashCode()
-            . __CLASS__
+                . $this->lineWidth
+                . $this->dashStyle
+                . $this->color->getHashCode()
+                . __CLASS__
         );
     }
 
