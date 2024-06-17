@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPPresentation - A pure PHP library for reading and writing
  * presentations documents.
@@ -215,7 +216,8 @@ class Font implements ComparableInterface
     public function setPanose(string $pValue): self
     {
         if (mb_strlen($pValue) !== 10) {
-            throw new InvalidParameterException('pValue', $pValue, 'The length is not equals to 10');
+            // throw new InvalidParameterException('pValue', $pValue, 'The length is not equals to 10');
+            $pValue = substr($pValue, 0, 10);
         }
 
         $allowedChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
@@ -543,15 +545,15 @@ class Font implements ComparableInterface
     {
         return md5(
             $this->name
-            . $this->size
-            . ($this->bold ? 't' : 'f')
-            . ($this->italic ? 't' : 'f')
-            . $this->baseline
-            . $this->underline
-            . ($this->strikethrough ? 't' : 'f')
-            . $this->format
-            . $this->color->getHashCode()
-            . __CLASS__
+                . $this->size
+                . ($this->bold ? 't' : 'f')
+                . ($this->italic ? 't' : 'f')
+                . $this->baseline
+                . $this->underline
+                . ($this->strikethrough ? 't' : 'f')
+                . $this->format
+                . $this->color->getHashCode()
+                . __CLASS__
         );
     }
 
